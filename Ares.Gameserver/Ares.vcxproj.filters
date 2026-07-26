@@ -39,6 +39,9 @@
     <ClInclude Include="Headers\Modules\ShooterGame\Components\PlayerPurchaseablesComponent.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Headers\Modules\ShooterGame\Components\MapPingComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Launch.cpp">
@@ -81,6 +84,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Source\Modules\ShooterGame\Components\PlayerPurchaseablesComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Modules\ShooterGame\Components\MapPingComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
