@@ -51,16 +51,22 @@ void MainThread()
     Hooking::HookEvery<UAbilitySystemComponent>(0x7F8 / 8, &InternalServerTryActivateAbility);
 
     printf("[Runtime] Opening ascent!\n");
-   // UGameplayStatics::OpenLevel(UWorld::GetWorld(), FName(TEXT("/Game/Maps/Duality/Duality")), false, TEXT(""));
 
-        UGameplayStatics::OpenLevel(UWorld::GetWorld(), FName(TEXT("/Game/Maps/Ascent/Ascent")), false, TEXT(""));
+    // Duality - Bind
+    // Bonsai - Split
+    // Triad - Haven
+    // Ascent
+
+    // UGameplayStatics::OpenLevel(UWorld::GetWorld(), FName(TEXT("/Game/Maps/Duality/Duality")), false, TEXT(""));
+
+    UGameplayStatics::OpenLevel(UWorld::GetWorld(), FName(TEXT("/Game/Maps/Bonsai/Bonsai")), false, TEXT("")); //ascent
     //UGameplayStatics::OpenLevel(UWorld::GetWorld(), FName(TEXT("/Game/Maps/Poveglia/Range?game=/Game/GameModes/ShootingRange/ShootingRangeGameMode.ShootingRangeGameMode_C")), false, TEXT(""));
-   // UGameplayStatics::OpenLevel(UWorld::GetWorld(), FName(TEXT("/Game/Maps/PregameV2/CharacterSelectPersistentLevel")), true, TEXT(""));
+    // UGameplayStatics::OpenLevel(UWorld::GetWorld(), FName(TEXT("/Game/Maps/PregameV2/CharacterSelectPersistentLevel")), true, TEXT(""));
 }
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved)
 {
-    switch (ul_reason_for_call)
+    switch (ul_reason_for_call) 
     {
     case DLL_PROCESS_ATTACH:
         std::thread(MainThread).detach();

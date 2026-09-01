@@ -1,5 +1,6 @@
 #include <pch.h>
 #include <Headers/Modules/ShooterGame/ShooterGameMode.h>
+#include <iostream>
 INIT_MODULE(ShooterGameMode);
 
 bool ShooterGameMode::ReadyToStartMatch(AShooterGameMode* _this)
@@ -26,7 +27,7 @@ bool ShooterGameMode::ReadyToStartMatch(AShooterGameMode* _this)
     bool bReady = UWorld::GetWorld()->NetDriver ? UWorld::GetWorld()->NetDriver->ClientConnections.Num() > 0 : false;
     if (bReady && bFirst)
     {
-    /*    bFirst = false;
+        bFirst = false;
 
         UStateComponent* StateComponent = _this->StateMachine->GetCurrentState();
         if (StateComponent)
@@ -74,7 +75,7 @@ bool ShooterGameMode::ReadyToStartMatch(AShooterGameMode* _this)
                     }
                 }
             }
-        }*/
+        }
     }
     return bReady;
 }
@@ -91,6 +92,13 @@ APawn* ShooterGameMode::SpawnDefaultPawnFor(AShooterGameMode* _this, AShooterPla
         auto PlayerStart = _this->ChoosePlayerStart(NewPlayer);
         if (PlayerStart)
             Pawn = (APawn*)SpawnActor(_this->GetDefaultPawnClassForController(NewPlayer), StartSpot->GetTransform(), NewPlayer, ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn);
+    }
+
+    auto PlayerStart = StartSpot->Cast<APlayerStart>();
+
+    if (PlayerStart)
+    {
+        std::cout << UKismetStringLibrary::Conv_NameToString(PlayerStart->PlayerStartTag).ToString().c_str() << std::endl;
     }
 
     GameState->MulticastSetPhase(EAresGamePhase::InRound);

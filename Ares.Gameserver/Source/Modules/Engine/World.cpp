@@ -37,7 +37,8 @@ bool World::Listen(UWorld* _this)
     auto ret = InitListen(NetDriver, _this, &URL, false, Err);
 
     SetWorld(NetDriver, _this);
-
+    
+    SetConsoleTitleA("Ares | Listening");
     printf("[Runtime] Listening!\n");
     return ret;
 }
